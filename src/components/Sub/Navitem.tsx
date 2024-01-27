@@ -26,4 +26,4 @@ const Navitem = ({ isAnyOpen, category, handleOpen, isOpen }: NavItemProps) => {
     )
 }
 
-export default Navitem
+export default Navitem      

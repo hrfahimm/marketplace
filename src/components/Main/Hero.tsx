@@ -1,7 +1,7 @@
 import React from 'react'
-import MaxWidthWrapper from './Sub/MaxWidthWrapper'
+import MaxWidthWrapper from '../Sub/MaxWidthWrapper'
 import Link from 'next/link'
-import { Button, buttonVariants } from './ui/button'
+import { Button, buttonVariants } from '../ui/button'
 
 const Hero = () => {
     return (

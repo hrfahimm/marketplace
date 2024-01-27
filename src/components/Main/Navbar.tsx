@@ -1,7 +1,7 @@
 import Link from "next/link"
-import MaxWidthWrapper from "./Sub/MaxWidthWrapper"
-import { Icons } from "./Sub/Icons"
-import NavItems from "./Sub/NavItems"
+import MaxWidthWrapper from "../Sub/MaxWidthWrapper"
+import { Icons } from "../Sub/Icons"
+import NavItems from "../Sub/NavItems"
 
 
 
