@@ -1,46 +1,44 @@
 export const PRODUCT_CATEGORIES = [
     {
-        lable: "UI Kits",
-        value: "ui_kits" as const,
+        label: 'UI Kits',
+        value: 'ui_kits' as const,
         featured: [
             {
-                name: 'Editor Picks',
-                href: '#',
-                imageSrc: '/mixed.jpg'
+                name: 'Editor picks',
+                href: `/products?category=ui_kits`,
+                imageSrc: '/nav/ui-kits/mixed.jpg',
             },
             {
                 name: 'New Arrivals',
-                href: '#',
-                imageSrc: '/blue.jpg'
+                href: '/products?category=ui_kits&sort=desc',
+                imageSrc: '/nav/ui-kits/blue.jpg',
             },
             {
-                name: 'Best Sellers',
-                href: '#',
-                imageSrc: '/purple.jpg'
+                name: 'Bestsellers',
+                href: '/products?category=ui_kits',
+                imageSrc: '/nav/ui-kits/purple.jpg',
             },
-        ]
-
+        ],
     },
     {
-        lable: "Icons",
-        value: "icons" as const,
+        label: 'Icons',
+        value: 'icons' as const,
         featured: [
             {
-                name: ' Favorite Icon picks',
-                href: '#',
-                imageSrc: '/picks.jpg'
+                name: 'Favorite Icon Picks',
+                href: `/products?category=icons`,
+                imageSrc: '/nav/icons/picks.jpg',
             },
             {
                 name: 'New Arrivals',
-                href: '#',
-                imageSrc: '/new.jpg'
+                href: '/products?category=icons&sort=desc',
+                imageSrc: '/nav/icons/new.jpg',
             },
             {
-                name: 'Best Selling Icons',
-                href: '#',
-                imageSrc: '/bestsellers.jpg'
+                name: 'Bestselling Icons',
+                href: '/products?category=icons',
+                imageSrc: '/nav/icons/bestsellers.jpg',
             },
-        ]
-
+        ],
     },
 ]

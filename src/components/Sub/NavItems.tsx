@@ -1,9 +1,8 @@
 'use client'
 
-import { PRODUCT_CATEGORIES } from "@/config"
-import Link from "next/link"
 import { useState } from "react"
-import Navitem from "./Navitem"
+import { PRODUCT_CATEGORIES } from "@/config"
+import NavItem from "./Navitem"
 
 const NavItems = () => {
     const [activeIndex, setActiveIndex] = useState<null | number>(null)
@@ -28,11 +27,12 @@ const NavItems = () => {
 
 
                     return (
-                        <Navitem category={category}
-                            isAnyOpen={isAnyOpen}
+                        <NavItem
+                            category={category}
                             handleOpen={handleOpen}
                             isOpen={isOpen}
                             key={category.value}
+                            isAnyOpen={isAnyOpen}
 
                         />
                     )
