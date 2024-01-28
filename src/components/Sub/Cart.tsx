@@ -16,6 +16,7 @@ const Cart = () => {
     const itemCount = 0
 
     const fee = 5
+
     return (
         <Sheet>
             <SheetTrigger className="group -m-2 flex items-center">
@@ -69,7 +70,7 @@ const Cart = () => {
                                 <Link href="/products" className={buttonVariants({
                                     variant: 'link',
                                     size: 'sm',
-                                    className: 'text-sm text-cyan-500 text-muted-foreground '
+                                    className: 'text-sm text-cyan-500 text-muted-foreground'
                                 })}>
                                     Add Item To Your Cart.  To chakeout  &rarr;
                                 </Link>
