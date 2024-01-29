@@ -21,7 +21,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@react-email/components": "^0.0.11",
     "@splidejs/splide": "^4.1.4",
-    "@tanstack/react-query": "4.36.1",
+    "@tanstack/react-query": "^5.17.19",
     "@trpc/client": "^10.43.1",
     "@trpc/next": "^10.43.1",
     "@trpc/react-query": "^10.43.1",
