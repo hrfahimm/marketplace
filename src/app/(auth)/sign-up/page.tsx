@@ -36,6 +36,9 @@ const Page = () => {
 
     const onSubmit = ({ email, password }: TAuthCredentialsValidator) => {
         console.log({ email, password })
+        //srnd data to server
+
+        
     }
 
     return (
