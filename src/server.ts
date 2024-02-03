@@ -3,6 +3,8 @@ import { getPayloadClient } from './get-payload'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { appRouter } from './trpc'
 import { nextApp, nextHandler } from './next.utils'
+import { inferAsyncReturnType } from '@trpc/server'
+import { IncomingMessage } from 'http'
 
 
 
@@ -18,7 +20,13 @@ const createContext = ({
     req,
     res,
 })
+export type ExpressContext = inferAsyncReturnType<
+    typeof createContext
+>
 
+export type WebhookRequest = IncomingMessage & {
+    rawBody: Buffer
+}
 
 const start = async () => {
 
@@ -31,11 +39,13 @@ const start = async () => {
         },
     })
 
-
-    app.use("/api/trpc", trpcExpress.createExpressMiddleware({
-        router: appRouter,
-        createContext
-    }));
+    app.use(
+        '/api/trpc',
+        trpcExpress.createExpressMiddleware({
+            router: appRouter,
+            createContext,
+        })
+    )
 
 
     app.use((req, res) => nextHandler(req, res))

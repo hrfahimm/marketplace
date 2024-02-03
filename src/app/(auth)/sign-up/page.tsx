@@ -8,26 +8,24 @@ import Link from 'next/link'
 import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import { trpc } from '@/trpc/client'
+import { AuthCredentialsValidator, TAuthCredentialsValidator } from '@/lib/validators/account-credentials-validarot'
 
 
 const Page = () => {
 
+    // const AuthCredentialsValidator = z.object({
+    //     email: z.string().email(),
 
-    const AuthCredentialsValidator = z.object({
-        email: z.string().email(),
-
-        password: z.string().min(8, { message: 'Password Must 8 charector' }),
-    });
+    //     password: z.string().min(8, { message: 'Password Must 8 charector' }),
+    // });
 
 
-    type TAuthCredentialsValidator = z.infer<typeof AuthCredentialsValidator>
+    // type TAuthCredentialsValidator = z.infer<typeof AuthCredentialsValidator>
 
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm<TAuthCredentialsValidator>({ resolver: zodResolver(AuthCredentialsValidator), })
 

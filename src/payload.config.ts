@@ -11,6 +11,7 @@ dotenv.config({
     path: path.resolve(__dirname, '../.env'),
 })
 
+
 export default buildConfig({
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
     collections: [],
