@@ -9,6 +9,7 @@ import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import { trpc } from '@/trpc/client'
 
 
 const Page = () => {
@@ -31,6 +32,11 @@ const Page = () => {
     } = useForm<TAuthCredentialsValidator>({ resolver: zodResolver(AuthCredentialsValidator), })
 
 
+    const { data } = trpc.anyApiRoute.useQuery()
+
+    console.log(data, "dateekksdck")
+
+
 
     // const onSubmit: SubmitHandler<TAuthCredentialsValidator> = (data) => console.log(data)
 
@@ -38,7 +44,7 @@ const Page = () => {
         console.log({ email, password })
         //srnd data to server
 
-        
+
     }
 
     return (
