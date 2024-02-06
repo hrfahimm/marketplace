@@ -1,11 +1,11 @@
 'use client'
 
 import { PRODUCT_CATEGORIES } from '@/config'
+import { Button } from './ui/button'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from '../ui/button'
 
 type Category = (typeof PRODUCT_CATEGORIES)[number]
 
@@ -76,11 +76,16 @@ const NavItem = ({
                                                 />
                                             </div>
 
-                                            <Link href={item.href}
+                                            <Link
+                                                href={item.href}
                                                 className='mt-6 block font-medium text-gray-900'>
                                                 {item.name}
                                             </Link>
-                                            <p className='mt-1' aria-hidden='true'> Shop now</p>
+                                            <p
+                                                className='mt-1'
+                                                aria-hidden='true'>
+                                                Shop now
+                                            </p>
                                         </div>
                                     ))}
                                 </div>

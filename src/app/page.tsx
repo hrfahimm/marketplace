@@ -1,4 +1,4 @@
-import MaxWidthWrapper from "@/components/Sub/MaxWidthWrapper";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ArrowDownToLine, CheckCircle, Leaf } from 'lucide-react';
 import Link from "next/link";
@@ -31,7 +31,7 @@ export default function Home() {
                     <h1 className="text-4xl font-bold tracking-tighter text-gray-900 sm:text-6xl"> Your Marketplace for high-Quality
                         <span className="text-blue-600"> Digital Asseyts</span>
                     </h1>
-                    <p className="mt-6 text-lg max-w-prose text-muted-foreground ">
+                    <p className="mt-6 text-lg max-w-prose  text-muted-foreground ">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus enim eaque odio similique reprehenderit quis vel sed expedita commodi vero.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 mt-6">

@@ -20,6 +20,7 @@ export const authRouter = router({
                 },
             })
 
+
             if (users.length !== 0)
                 throw new TRPCError({ code: 'CONFLICT' })
 
@@ -31,12 +32,12 @@ export const authRouter = router({
                     role: 'user',
                 },
             })
-            return { success: true, sentToEmail: email }
 
-        })
-    
-    
-    
-    
+            return { success: true, sentToEmail: email }
+        }),
+
+
+
+
 
 })

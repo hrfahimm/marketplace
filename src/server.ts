@@ -2,16 +2,13 @@ import express from 'express'
 import { getPayloadClient } from './get-payload'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { appRouter } from './trpc'
-import { nextApp, nextHandler } from './next.utils'
 import { inferAsyncReturnType } from '@trpc/server'
 import { IncomingMessage } from 'http'
-
+import { nextApp, nextHandler } from './next.utils'
 
 
 const app = express()
 const PORT = Number(process.env.PORT) || 3000
-
-
 
 const createContext = ({
     req,
@@ -20,9 +17,8 @@ const createContext = ({
     req,
     res,
 })
-export type ExpressContext = inferAsyncReturnType<
-    typeof createContext
->
+
+export type ExpressContext = inferAsyncReturnType<typeof createContext>
 
 export type WebhookRequest = IncomingMessage & {
     rawBody: Buffer
@@ -39,6 +35,7 @@ const start = async () => {
         },
     })
 
+
     app.use(
         '/api/trpc',
         trpcExpress.createExpressMiddleware({
@@ -47,18 +44,18 @@ const start = async () => {
         })
     )
 
-
     app.use((req, res) => nextHandler(req, res))
 
     nextApp.prepare().then(() => {
-        // payload.logger.info('Next.js started')
+        payload.logger.info('Next.js started')
 
         app.listen(PORT, async () => {
-            // payload.logger.info(
-            //     `Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`
-            // )
+            payload.logger.info(
+                `Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`
+            )
         })
     })
 }
 
 start()
+

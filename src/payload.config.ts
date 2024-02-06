@@ -2,8 +2,8 @@
 
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { buildConfig } from 'payload/config'
-import { slateEditor } from '@payloadcms/richtext-slate'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
+import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
 import dotenv from 'dotenv'
 

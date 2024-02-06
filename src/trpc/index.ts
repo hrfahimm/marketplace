@@ -7,10 +7,10 @@ export const appRouter = router({
     auth: authRouter,
     payment: paymentRouter,
 
-
-    anyApiRoute: publicProcedure.query(() => {
+    getInfiniteProducts: publicProcedure.query(() => {
         return "hellow"
     })
 })
+
 
 export type AppRouter = typeof appRouter
