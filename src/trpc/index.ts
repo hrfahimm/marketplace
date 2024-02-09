@@ -1,15 +1,9 @@
 import { authRouter } from "./auth-router";
-import { paymentRouter } from "./payment-router";
-import { publicProcedure, router } from "./trpc";
+import { router } from "./trpc";
 
 
 export const appRouter = router({
     auth: authRouter,
-    payment: paymentRouter,
-
-    getInfiniteProducts: publicProcedure.query(() => {
-        return "hellow"
-    })
 })
 
 
