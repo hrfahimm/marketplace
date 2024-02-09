@@ -1,28 +1,17 @@
 'use client'
 
 import { ShoppingCart } from 'lucide-react'
-import {
-    Sheet,
-    SheetContent,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from './ui/sheet'
-import { Separator } from './ui/separator'
-import { formatPrice } from '@/lib/utils'
+import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger, } from './ui/sheet'
 import Link from 'next/link'
 import { buttonVariants } from './ui/button'
 import Image from 'next/image'
-
-import { useEffect, useState } from 'react'
-
+import { Separator } from './ui/separator'
+import { formatPrice } from '@/lib/utils'
 
 
 
 const Cart = () => {
-
-    const itemCount = 0
+    const itemCount = 5
 
     const fee = 5
 
@@ -34,59 +23,82 @@ const Cart = () => {
                     0
                 </span>
             </SheetTrigger>
-            <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg ">
-                <SheetHeader className="space-y-2.5 pr-6">
-                    <SheetTitle className="">  Cart (0)</SheetTitle>
+
+
+
+            <SheetContent className='flex w-full flex-col pr-0 sm:max-w-lg'>
+                <SheetHeader className='space-y-2.5 pr-6'>
+                    <SheetTitle>Cart ({itemCount})</SheetTitle>
                 </SheetHeader>
-                {
-                    itemCount > 0 ? (
-                        <>
-                            <div className="flex w-full flex-col pr-6">
-                                {/* todo card logic */}
-                            </div>
-                            <div className="space-y-4 pr-6">
-                                <Separator />
-                                <div className="space-y-1.5 text-sm">
-                                    <div className="flex ">
-                                        <span className="flex-1">Shipping</span>
-                                        <span className=" ">Free</span>
-                                    </div>
-                                    <div className="flex ">
-                                        <span className="flex-1">Transation</span>
-                                        <span className=" ">{formatPrice(fee)}</span>
-                                    </div>
-                                    <div className="flex ">
-                                        <span className="flex-1 font-bold">Total</span>
-                                        <span className="font-bold ">{formatPrice(fee)}</span>
-                                    </div>
+
+
+                {itemCount > 0 ? (
+                    <>
+                        <div className='flex w-full flex-col pr-6'>
+                            {/* TODO */} card item
+                        </div>
+                        <div className='space-y-4 pr-6'>
+                            <Separator />
+                            <div className='space-y-1.5 text-sm'>
+                                <div className='flex'>
+                                    <span className='flex-1'>Shipping</span>
+                                    <span>Free</span>
                                 </div>
-                                <SheetFooter  >
-                                    <SheetTrigger asChild>
-                                        <Link href="/cart" className={buttonVariants({ className: 'w-full' })}>
-                                            Continue To Checkout
-                                        </Link>
-                                    </SheetTrigger>
-                                </SheetFooter>
+                                <div className='flex'>
+                                    <span className='flex-1'>
+                                        Transaction Fee
+                                    </span>
+                                    <span>{formatPrice(fee)}</span>
+                                </div>
+                                <div className='flex'>
+                                    <span className='flex-1'>Total</span>
+                                    <span>
+                                        {formatPrice(fee)}
+                                    </span>
+                                </div>
                             </div>
-                        </>
-                    ) : (
-                        <div className="flex h-full flex-col items-center justify-center skew-y-1">
-                            <div aria-hidden='true' className="relative mb-4 h-60 w-60 text-muted-foreground ">
-                                <Image src="/hippo-empty-cart.png" fill alt="cart img" />
-                            </div>
-                            <div className="text-xl font-bold ">Your Cart is Empty</div>
-                            <SheetTrigger>
-                                <Link href="/products" className={buttonVariants({
+
+                            <SheetFooter>
+                                <SheetTrigger asChild>
+                                    <Link
+                                        href='/cart'
+                                        className={buttonVariants({
+                                            className: 'w-full',
+                                        })}>
+                                        Continue to Checkout
+                                    </Link>
+                                </SheetTrigger>
+                            </SheetFooter>
+                        </div>
+                    </>
+                ) : (
+                    <div className='flex h-full flex-col items-center justify-center space-y-1'>
+                        <div
+                            aria-hidden='true'
+                            className='relative mb-4 h-60 w-60 text-muted-foreground'>
+                            <Image
+                                src='/hippo-empty-cart.png'
+                                fill
+                                alt='empty shopping cart hippo'
+                            />
+                        </div>
+                        <div className='text-xl font-semibold'>
+                            Your cart is empty
+                        </div>
+                        <SheetTrigger asChild>
+                            <Link
+                                href='/products'
+                                className={buttonVariants({
                                     variant: 'link',
                                     size: 'sm',
-                                    className: 'text-sm text-cyan-500 text-muted-foreground'
+                                    className:
+                                        'text-sm text-muted-foreground',
                                 })}>
-                                    Add Item To Your Cart.  To chakeout  &rarr;
-                                </Link>
-                            </SheetTrigger>
-                        </div>
-                    )
-                }
+                                Add items to your cart to checkout
+                            </Link>
+                        </SheetTrigger>
+                    </div>
+                )}
             </SheetContent>
         </Sheet>
     )

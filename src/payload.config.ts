@@ -1,47 +1,37 @@
-
-
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { buildConfig } from 'payload/config'
-import { webpackBundler } from '@payloadcms/bundler-webpack'
-import { slateEditor } from '@payloadcms/richtext-slate'
-import path from 'path'
-import dotenv from 'dotenv'
-import { Users } from './collections/Users'
-
-dotenv.config({
-    path: path.resolve(__dirname, '../.env'),
-})
-
+import { buildConfig } from "payload/config";
+import { mongooseAdapter } from "@payloadcms/db-mongodb"
+import { slateEditor } from "@payloadcms/richtext-slate"
+import { webpackBundler } from "@payloadcms/bundler-webpack"
+import path from "path";
 
 export default buildConfig({
     serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
-    collections: [Users],
+    collections: [],
     routes: {
-        admin: '/sell',
+        admin: '/sell'
     },
     admin: {
-        user: 'users',
         bundler: webpackBundler(),
         meta: {
-            titleSuffix: '- Marketplace',
+            titleSuffix: "- online-mart",
             favicon: '/favicon.ico',
-            ogImage: '/thumbnail.jpg',
-        },
-    },
-    rateLimit: {
-        max: 2000,
+            ogImage: '/thumbnail.jpg'
+        }
     },
 
+    rateLimit: {
+        max: 2000
+    },
 
     editor: slateEditor({}),
     db: mongooseAdapter({
         url: process.env.MONGODB_URL!,
+        // url: 'mongodb+srv://online-mart:online-azx-mart@cluster0.qmjdtjb.mongodb.net/?retryWrites=true&w=majority',
 
 
     }),
 
     typescript: {
-        outputFile: path.resolve(__dirname, 'payload-types.ts'),
-    },
-
+        outputFile: path.resolve(__dirname, 'payload-types.ts')
+    }
 })

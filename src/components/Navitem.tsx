@@ -44,8 +44,7 @@ const NavItem = ({
             </div>
 
             {isOpen ? (
-                <div
-                    onClick={() => close()}
+                <div onClick={() => close()}
                     className={cn(
                         'absolute inset-x-0 top-full text-sm text-muted-foreground',
                         {

@@ -1,24 +1,24 @@
 import Link from 'next/link'
 import MaxWidthWrapper from './MaxWidthWrapper'
 import { Icons } from './Icons'
-import NavItems from './NavItems'
 import { buttonVariants } from './ui/button'
-import Cart from './Cart'
-
 import { cookies } from 'next/headers'
+import NavItems from './NavItems'
+import Cart from './Cart'
 
 
 const Navbar = async () => {
     const user = null
 
     const nextCookies = cookies()
+
     return (
         <div className='bg-white sticky z-50 top-0 inset-x-0 h-16'>
             <header className='relative bg-white'>
                 <MaxWidthWrapper>
                     <div className='border-b border-gray-200'>
                         <div className='flex h-16 items-center'>
-                            {/* <MobileNav /> */}
+                            {/* TODO <MobileNav /> */}
 
                             <div className='ml-4 flex lg:ml-0'>
                                 <Link href='/'>
@@ -42,6 +42,8 @@ const Navbar = async () => {
                                         </Link>
                                     )}
 
+
+
                                     {user ? null : (
                                         <span
                                             className='h-6 w-px bg-gray-200'
@@ -49,8 +51,10 @@ const Navbar = async () => {
                                         />
                                     )}
 
+
+
                                     {user ? (
-                                        <p></p>
+                                        <p> </p>
                                     ) : (
                                         <Link
                                             href='/sign-up'
@@ -61,12 +65,18 @@ const Navbar = async () => {
                                         </Link>
                                     )}
 
+
+
+
                                     {user ? (
                                         <span
                                             className='h-6 w-px bg-gray-200'
                                             aria-hidden='true'
                                         />
                                     ) : null}
+
+
+
 
                                     {user ? null : (
                                         <div className='flex lg:ml-6'>
@@ -76,6 +86,7 @@ const Navbar = async () => {
                                             />
                                         </div>
                                     )}
+
 
                                     <div className='ml-4 flow-root lg:ml-6'>
                                         <Cart />
@@ -91,6 +102,3 @@ const Navbar = async () => {
 }
 
 export default Navbar
-
-
-
