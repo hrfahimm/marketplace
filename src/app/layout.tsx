@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 import { Toaster } from 'sonner'
+import Providers from "@/components/Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,13 +26,13 @@ export default function RootLayout({
                 'relative h-full font-sans antialiased', inter.className)}>
 
                 <main className='relative flex flex-col min-h-screen'>
-                    {/* <Providers> */}
-                    <Navbar />
-                    <div className='flex-grow flex-1'>
-                        {children}
-                    </div>
-                    <Footer />
-                    {/* </Providers> */}
+                    <Providers>
+                        <Navbar />
+                        <div className='flex-grow flex-1'>
+                            {children}
+                        </div>
+                        <Footer />
+                    </Providers>
                 </main>
                 <Toaster position='top-center' richColors />
             </body>

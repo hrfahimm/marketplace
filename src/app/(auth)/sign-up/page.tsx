@@ -1,5 +1,4 @@
 'use client'
-
 import { Icons } from '@/components/Icons'
 import {
     Button,
@@ -13,18 +12,13 @@ import { ArrowRight } from 'lucide-react'
 import { useForm } from "react-hook-form"
 import { toast } from 'sonner'
 import { ZodError, z } from 'zod'
-
-
-
 import * as React from 'react'
 import Link from 'next/link'
-import { AuthCredentialsValidator, TAuthCredentialsValidator } from '@/lib/account-credentials-validator'
+import { AuthCredentialsValidator, TAuthCredentialsValidator } from '@/lib/validators/account-credentials-validator'
 import { useRouter } from 'next/router'
+import { trpc } from '@/trpc/client'
 
 const Page = () => {
-
-
-
     const {
         register,
         handleSubmit,
@@ -33,42 +27,17 @@ const Page = () => {
         resolver: zodResolver(AuthCredentialsValidator),
     })
 
-    const router = useRouter()
+    const { mutate } = trpc.auth.createPayloadUser.useMutation({
 
-    // const { mutate, isLoading } =
-    //     trpc.auth.createPayloadUser.useMutation({
-    //         onError: (err) => {
-    //             if (err.data?.code === 'CONFLICT') {
-    //                 toast.error(
-    //                     'This email is already in use. Sign in instead?'
-    //                 )
 
-    //                 return
-    //             }
+    })
 
-    //             if (err instanceof ZodError) {
-    //                 toast.error(err.issues[0].message)
-
-    //                 return
-    //             }
-
-    //             toast.error(
-    //                 'Something went wrong. Please try again.'
-    //             )
-    //         },
-    //         onSuccess: ({ sentToEmail }) => {
-    //             toast.success(
-    //                 `Verification email sent to ${sentToEmail}.`
-    //             )
-    //             router.push('/verify-email?to=' + sentToEmail)
-    //         },
-    //     })
 
     const onSubmit = ({
         email,
         password,
     }: TAuthCredentialsValidator) => {
-        // mutate({ email, password })
+        mutate({ email, password })
     }
 
     return (
