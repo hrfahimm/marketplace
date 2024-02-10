@@ -4,7 +4,6 @@ import type { InitOptions } from 'payload/config'
 import payload, { Payload } from 'payload'
 import nodemailer from 'nodemailer'
 
-
 dotenv.config({
     path: path.resolve(__dirname, '../.env.local'),
 })
@@ -16,7 +15,6 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: 'resend',
         pass: process.env.RESEND_API_KEY,
-
     },
 })
 
@@ -49,7 +47,7 @@ export const getPayloadClient = async ({
             email: {
                 transport: transporter,
                 fromAddress: 'onboarding@resend.dev',
-                fromName: "Marketplace",
+                fromName: 'Marketplace',
             },
             secret: process.env.PAYLOAD_SECRET,
             local: initOptions?.express ? false : true,
