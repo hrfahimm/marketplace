@@ -5,7 +5,7 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
 import { Users } from './collections/Users'
 import dotenv from 'dotenv'
- 
+
 dotenv.config({
     path: path.resolve(__dirname, '../.env.local'),
 })
@@ -20,7 +20,7 @@ export default buildConfig({
         user: 'users',
         bundler: webpackBundler(),
         meta: {
-            titleSuffix: '- Marketplace',
+            titleSuffix: 'Marketplace',
             favicon: '/favicon.ico',
             ogImage: '/thumbnail.jpg',
         },
