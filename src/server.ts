@@ -4,6 +4,12 @@ import { nextApp, nextHandler } from "./next-utils"
 import * as trpcExpress from "@trpc/server/adapters/express"
 import { appRouter } from "./trpc"
 import { inferAsyncReturnType } from "@trpc/server"
+import path from 'path'
+import dotenv from 'dotenv'
+
+dotenv.config({
+    path: path.resolve(__dirname, '../.env.local'),
+})
 
 const app = express()
 
