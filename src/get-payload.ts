@@ -49,13 +49,13 @@ export const getPayloadClient = async ({
 
                 fromAddress: 'onboarding@resend.dev',
                 fromName: 'Marketplace',
-                
+
 
 
             },
             secret: process.env.PAYLOAD_SECRET,
             local: initOptions?.express ? false : true,
-            
+
             ...(initOptions || {}),
         })
     }

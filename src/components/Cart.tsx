@@ -20,7 +20,7 @@ const Cart = () => {
             <SheetTrigger className="group -m-2 flex items-center">
                 <ShoppingCart aria-hidden='true' className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-600" />
                 <span className="ml-2 text-sm font-medium text-gray-600 group-hover:text-gray-950">
-                    0
+                    1
                 </span>
             </SheetTrigger>
 
