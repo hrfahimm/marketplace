@@ -6,7 +6,8 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Skeleton } from './ui/skeleton'
 import ImageSlider from './ImageSlider'
-import { cn } from '@/lib/utils'
+import { cn, formatPrice } from '@/lib/utils'
+import { PRODUCT_CATEGORIES } from '@/config'
 
 interface ProductListingProps {
     product: Product | null
@@ -33,6 +34,12 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
     if (!product || !isVisible) return <ProductPlaceholder />
 
 
+    const lable = PRODUCT_CATEGORIES.find(
+        ({ value }) => value === product.category
+    )?.label
+
+    const validUrls = product.images.map(({ image }) => (typeof image === 'string' ? image : image.url)).filter(Boolean) as string[]
+
 
 
 
@@ -47,17 +54,17 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
                 )}
                 href={`/product/${product.id}`}>
                 <div className='flex flex-col w-full'>
-                    {/* <ImageSlider urls={validUrls} /> */}
+                    <ImageSlider urls={validUrls} />
 
                     <h3 className='mt-4 font-medium text-sm text-gray-700'>
                         {product.name}
                     </h3>
-                    {/* <p className='mt-1 text-sm text-gray-500'>
-                        {label}
-                    </p> */}
-                    {/* <p className='mt-1 font-medium text-sm text-gray-900'>
+                    <p className='mt-1 text-sm text-gray-500'>
+                        {lable}
+                    </p>
+                    <p className='mt-1 font-medium text-sm text-gray-900'>
                         {formatPrice(product.price)}
-                    </p> */}
+                    </p>
                 </div>
             </Link>
         )
