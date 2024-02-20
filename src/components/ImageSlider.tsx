@@ -15,24 +15,22 @@ interface ImageSliderProps {
 }
 
 const ImageSlider = ({ urls }: ImageSliderProps) => {
-    const [swiper, setSwiper] = useState<null | SwiperType>(
-        null
-    )
+    const [swiper, setSwiper] = useState<null | SwiperType>(null)
     const [activeIndex, setActiveIndex] = useState(0)
-
     const [slideConfig, setSlideConfig] = useState({
         isBeginning: true,
         isEnd: activeIndex === (urls.length ?? 0) - 1,
     })
 
     useEffect(() => {
-        swiper?.on('slideChange', ({ activeIndex }) => {
-            setActiveIndex(activeIndex)
-            setSlideConfig({
-                isBeginning: activeIndex === 0,
-                isEnd: activeIndex === (urls.length ?? 0) - 1,
+        swiper?.on('slideChange',
+            ({ activeIndex }) => {
+                setActiveIndex(activeIndex)
+                setSlideConfig({
+                    isBeginning: activeIndex === 0,
+                    isEnd: activeIndex === (urls.length ?? 0) - 1,
+                })
             })
-        })
     }, [swiper, urls])
 
     const activeStyles =
@@ -70,6 +68,7 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
                             !slideConfig.isBeginning,
                     })}
                     aria-label='previous image'>
+
                     <ChevronLeft className='h-4 w-4 text-zinc-700' />{' '}
                 </button>
             </div>
