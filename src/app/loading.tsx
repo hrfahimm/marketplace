@@ -3,10 +3,10 @@ import Image from "next/image";
 export default function Loading() {
 
     return (
-        <div className=" mt-16 flex justify-center text-center items-center mx-auto my-auto ">
+        <div className=" mt-32 h-screen flex justify-center text-center items-center mx-auto my-auto ">
 
-            <Image alt="loading" src="/load.svg" width='50' height="50" />
-            <p className="mt-16">loading ...</p>
+            <Image alt="loading" src="/load.svg" width='300' height="300" />
+
 
         </div>
     )
