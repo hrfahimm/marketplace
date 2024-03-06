@@ -23,10 +23,6 @@ const Page = () => {
             },
         })
 
-
-
-
-
     const productIds = items.map(({ product }) => product.id)
 
     const [isMounted, setIsMounted] = useState<boolean>(false)
@@ -39,7 +35,7 @@ const Page = () => {
         0
     )
 
-    const fee = 0.7
+    const fee = 1
 
     return (
         <div className='bg-white'>
