@@ -80,6 +80,7 @@ const ProductReel = (props: ProductReelProps) => {
                         {map.map((product, i) => (
                             <ProductListing
                                 key={`product-${i}`}
+
                                 product={product}
                                 index={i}
                             />
