@@ -45,7 +45,7 @@
     "react-hot-toast": "^2.4.1",
     "resend": "^3.1.0",
     "sonner": "^1.4.0",
-    "stripe": "^14.20.0",
+    "stripe": "^14.21.0",
     "swiper": "^11.0.6",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",

@@ -1,6 +1,4 @@
 'use client'
-
-
 import { Product } from '@/payload-types'
 import { trpc } from '@/trpc/client'
 import Link from 'next/link'
