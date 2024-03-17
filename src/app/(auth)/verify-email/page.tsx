@@ -1,4 +1,3 @@
-
 import VerifyEmail from '@/components/VerifyEmail'
 import Image from 'next/image'
 
@@ -7,6 +6,7 @@ interface PageProps {
         [key: string]: string | string[] | undefined
     }
 }
+
 const VerifyEmailPage = ({ searchParams }: PageProps) => {
     const token = searchParams.token
     const toEmail = searchParams.to

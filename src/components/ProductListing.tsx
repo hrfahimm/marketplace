@@ -1,23 +1,23 @@
 'use client'
 
-
 import { Product } from '@/payload-types'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Skeleton } from './ui/skeleton'
-import ImageSlider from './ImageSlider'
+import Link from 'next/link'
 import { cn, formatPrice } from '@/lib/utils'
 import { PRODUCT_CATEGORIES } from '@/config'
+import ImageSlider from './ImageSlider'
 
 interface ProductListingProps {
     product: Product | null
     index: number
 }
 
-
-const ProductListing = ({ product, index }: ProductListingProps) => {
+const ProductListing = ({
+    product,
+    index,
+}: ProductListingProps) => {
     const [isVisible, setIsVisible] = useState<boolean>(false)
-
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -27,21 +27,17 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
         return () => clearTimeout(timer)
     }, [index])
 
-
-
-
-
     if (!product || !isVisible) return <ProductPlaceholder />
 
-
-    const lable = PRODUCT_CATEGORIES.find(
+    const label = PRODUCT_CATEGORIES.find(
         ({ value }) => value === product.category
     )?.label
 
-    const validUrls = product.images.map(({ image }) => (typeof image === 'string' ? image : image.url)).filter(Boolean) as string[]
-
-
-
+    const validUrls = product.images
+        .map(({ image }) =>
+            typeof image === 'string' ? image : image.url
+        )
+        .filter(Boolean) as string[]
 
     if (isVisible && product) {
         return (
@@ -60,7 +56,7 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
                         {product.name}
                     </h3>
                     <p className='mt-1 text-sm text-gray-500'>
-                        {lable}
+                        {label}
                     </p>
                     <p className='mt-1 font-medium text-sm text-gray-900'>
                         {formatPrice(product.price)}
@@ -70,11 +66,6 @@ const ProductListing = ({ product, index }: ProductListingProps) => {
         )
     }
 }
-
-
-
-
-
 
 const ProductPlaceholder = () => {
     return (

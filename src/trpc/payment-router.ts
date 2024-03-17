@@ -44,7 +44,8 @@ export const paymentRouter = router({
                 },
             })
 
-            const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = []
+            const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] =
+                []
 
             filteredProducts.forEach((product) => {
                 line_items.push({
@@ -54,7 +55,8 @@ export const paymentRouter = router({
             })
 
             line_items.push({
-                price: 'price_1OufRQDK5R2d9Ze8wsjRwfGi',
+                price: "price_1Ov1IzDK5R2d9Ze8GXRR9wsT",
+
                 quantity: 1,
                 adjustable_quantity: {
                     enabled: false,
@@ -72,12 +74,12 @@ export const paymentRouter = router({
                             userId: user.id,
                             orderId: order.id,
                         },
+
                         line_items,
                     })
 
                 return { url: stripeSession.url }
             } catch (err) {
-                console.log(err)
                 return { url: null }
             }
         }),

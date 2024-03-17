@@ -1,9 +1,10 @@
 'use client'
+
+import { TQueryValidator } from '@/lib/validators/query-validator'
 import { Product } from '@/payload-types'
 import { trpc } from '@/trpc/client'
 import Link from 'next/link'
 import ProductListing from './ProductListing'
-import { TQueryValidator } from '@/lib/validators/query-validator'
 
 interface ProductReelProps {
     title: string
@@ -17,23 +18,22 @@ const FALLBACK_LIMIT = 4
 const ProductReel = (props: ProductReelProps) => {
     const { title, subtitle, href, query } = props
 
-    const { data: queryResults, isLoading } = trpc.getInfiniteProducts.useInfiniteQuery(
-        {
-            limit: query.limit ?? FALLBACK_LIMIT,
-            query,
-        },
-        {
-            getNextPageParam: (lastPage) => lastPage.nextPage,
-        }
-    )
+    const { data: queryResults, isLoading } =
+        trpc.getInfiniteProducts.useInfiniteQuery(
+            {
+                limit: query.limit ?? FALLBACK_LIMIT,
+                query,
+            },
+            {
+                getNextPageParam: (lastPage) => lastPage.nextPage,
+            }
+        )
 
     const products = queryResults?.pages.flatMap(
         (page) => page.items
     )
 
-
     let map: (Product | null)[] = []
-
     if (products && products.length) {
         map = products
     } else if (isLoading) {
@@ -41,10 +41,6 @@ const ProductReel = (props: ProductReelProps) => {
             query.limit ?? FALLBACK_LIMIT
         ).fill(null)
     }
-
-
-
-
 
     return (
         <section className='py-12'>
@@ -65,7 +61,7 @@ const ProductReel = (props: ProductReelProps) => {
                 {href ? (
                     <Link
                         href={href}
-                        className='hidden text-sm font-medium text-gray-500 hover:text-gray-900 md:block'>
+                        className='hidden text-sm font-medium text-blue-600 hover:text-blue-500 md:block'>
                         Shop the collection{' '}
                         <span aria-hidden='true'>&rarr;</span>
                     </Link>
@@ -78,7 +74,6 @@ const ProductReel = (props: ProductReelProps) => {
                         {map.map((product, i) => (
                             <ProductListing
                                 key={`product-${i}`}
-
                                 product={product}
                                 index={i}
                             />
