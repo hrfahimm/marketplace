@@ -47,7 +47,7 @@ export const getPayloadClient = async ({
             email: {
                 transport: transporter,
 
-                fromAddress: 'onboarding@resend.dev',
+                fromAddress: '<onboarding@resend.dev>',
                 fromName: 'Marketplace',
 
 
